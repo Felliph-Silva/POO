@@ -3,25 +3,26 @@
 
 #include <iostream>
 #include <string>
-#include <math.h>
+#include <cmath>
 
-class ponto
+using namespace std;
+
+class ponto//Classe utilizada.
 {
 public:
 
-    int getposition_x();
+    int getposition_x(); //Métodos para obter a posição.
     int getposition_y();
-    int distance();
+    float distance(); //Método para obter a distância.
+    float distanceobjt(ponto ponto2); //Método para obter a distância do ponto até outro ponto.
 
-    void setposition_x();
-    void setposition_y();
-    void quadrante();
-    void print();
+    void setposition(int x, int y); //Método para mudar a posição do ponto.
+    void quadrante(); //Exibir o quadrante no qual o ponto está localizado.
+    void print(); //Exibir os estatus do ponto.
 
-private:
+private: //Atributos encapsulados.
 
-    int position[2];
-    float distance;
+    int position_x, position_y; //Posição (x,y).
 };
 
 #endif
