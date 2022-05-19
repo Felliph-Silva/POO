@@ -1,8 +1,7 @@
-#ifndef _ponto_
+#ifndef _ponto_ //Definição da classe.
 #define _ponto_
 
 #include <iostream>
-#include <string>
 #include <cmath>
 
 using namespace std;

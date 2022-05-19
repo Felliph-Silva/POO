@@ -1,5 +1,5 @@
 // Arquivo de cabeçalho da classe
-// Este arquivo contém somente as definições da classe
+// Este arquivo contém somente a definição da classe
 // Seus métodos e atributos
 #ifndef CLASSE_ALUNO
 #define CLASSE_ALUNO

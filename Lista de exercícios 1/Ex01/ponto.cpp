@@ -1,4 +1,4 @@
-#include "ponto.hpp"
+#include "ponto.hpp" //Incluir a classe.
 using namespace std;
 
 int ponto::getposition_x()//Retornar a posição em x do objeto.
@@ -65,7 +65,7 @@ float ponto::distanceobjt(ponto ponto) //Distância de um ponto à outro.
 
 void ponto::print() //Imprimir os status: posição no plano, distância do ponto até a origem e o quadrante em que se encontra.
 {
-    cout << "A posição do ponto é ( " << position_x << ", " << position_y << " )\n"
+    cout << "A posição do ponto é ( " << position_x << " , " << position_y << " )\n"
          << "A distância desse ponto até a origem é: " << distance() << endl;
 
      quadrante();
