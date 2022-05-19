@@ -1,0 +1,4 @@
+//Ciclo de vida dos objetos.
+* criação ---> CONSTRUTOR
+* Uso do objeto -------> chamadas de métodos
+* Destruição ------> termina o escopo do objeto ----> DESTRUTOR 

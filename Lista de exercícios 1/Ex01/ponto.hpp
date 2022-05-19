@@ -9,7 +9,7 @@ using namespace std;
 class ponto//Classe utilizada.
 {
 public:
-
+    //ponto() criar constutor
     int getposition_x(); //Métodos para obter a posição.
     int getposition_y();
     float distance(); //Método para obter a distância.
