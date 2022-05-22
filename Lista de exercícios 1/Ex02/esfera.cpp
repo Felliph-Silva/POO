@@ -9,7 +9,7 @@ void esfera::setraio(float r)
 
 void esfera::status()
 {
-    cout << raio << area() << volume();
+    cout << endl << raio << endl << area() << endl << volume() << endl;
 }
 
 float esfera::getraio()
