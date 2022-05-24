@@ -6,13 +6,12 @@ using namespace std;
 int main()
 {
 
-    esfera esfera1;
-
     int raio=10;
+    esfera esfera1(raio);
 
-    esfera1.setraio(raio);
+    float altura = 20;
 
-    cout << "Área = " << esfera1.area() << "\n Volume = " << esfera1.volume() <<  "\n Prenchimento =" << esfera1.preenchimento(21);
+    cout << "Área = " << esfera1.area() << "\n Volume = " << esfera1.volume() <<  "\n Prenchimento =" << esfera1.preenchimento(altura);
 
     esfera1.status();
     

@@ -26,7 +26,7 @@ public:
     void incrementarsegundos(); //Métodos de incremento.
     void incrementarminutos();
     void incrementarhoras();
-    void incrementarhorario();
+    int incrementarhorario();
 
     void imptimirstatus(); //Método para imprimir o horário.
 

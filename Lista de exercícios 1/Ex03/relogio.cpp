@@ -19,7 +19,7 @@ int relogio::gethoras()
     return hour;
 }
 
-relogio::relogio(int hh, int mm, int ss)
+relogio::relogio(int hh, int mm, int ss) //Constutor
 {
     sethoras(hh);
     setminutos(mm);
@@ -60,27 +60,34 @@ void relogio::incrementarsegundos() //Incrementar o número de segundos, sem alt
     else sec++;
 }
 
-void relogio::incrementarhorario()
+int relogio::incrementarhorario()
 {
     if (sec < 60) //Condição para incrementar os segundos.
     {
         sec++;
+        return 0;
     }
-    else if (min < 60) //
+
+    else if (sec == 60 && min < 60)
     {
         min++;
         sec = 0;
+        return 0;
     }
-    else if(hour < 24)
+
+    else if(min == 60 && hour < 24)
     {
         hour++;
         min = 0;
+        return 0;
     }
+
     else
     {
         sec = 0;
         min = 0;
         hour = 0;
+        return 0;
     }
     
 }

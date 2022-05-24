@@ -12,6 +12,8 @@ private:
     float raio; //Atributo encapsulado.
 
 public:
+
+    esfera(float r); //Constutor.
     void setraio(float raio); //Atribuir raio da esfera.
     void status(); //Exibir status da esfera.
     float getraio(); //Retornar raio da esfera
