@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    int h = 23, m = 56, s = 59;
+    int h = 23, m = 59, s = 55;
 
     relogio h1(h, m, s);
 
@@ -14,9 +14,17 @@ int main()
     
     h1.incrementarhorario();
 
-    h1.imptimirstatus();
+    h1.imprimirstatus();
 
     }
+
+    h1.incrementarsegundos();
+    h1.incrementarminutos();
+    h1.incrementarhoras();
+
+    cout << "\n\n";
+
+    h1.imprimirstatus();
     
     return 0;
 }

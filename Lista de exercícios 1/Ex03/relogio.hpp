@@ -2,7 +2,6 @@
 #define _relogio_
 
 #include <iostream>
-#include <cmath>
 
 using namespace std;
 
@@ -28,7 +27,8 @@ public:
     void incrementarhoras();
     int incrementarhorario();
 
-    void imptimirstatus(); //Método para imprimir o horário.
+    //mUDAR PARA VOID**;
+    void imprimirstatus(); //Método para imprimir o horário.
 
 };
 
