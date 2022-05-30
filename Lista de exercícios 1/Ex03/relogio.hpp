@@ -17,6 +17,7 @@ private:
 public:
 
     relogio (int hh, int mm, int ss); //Constutor
+    ~relogio(); //Destrutor
 
     int getsegundos(); //Retornar os atributos.
     int getminutos(); 
@@ -25,9 +26,8 @@ public:
     void incrementarsegundos(); //Métodos de incremento.
     void incrementarminutos();
     void incrementarhoras();
-    int incrementarhorario();
+    void incrementarhorario();
 
-    //mUDAR PARA VOID**;
     void imprimirstatus(); //Método para imprimir o horário.
 
 };

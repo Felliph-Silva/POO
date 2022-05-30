@@ -22,9 +22,14 @@ int main()
     h1.incrementarminutos();
     h1.incrementarhoras();
 
-    cout << "\n\n";
+    cout << "\n";
 
     h1.imprimirstatus();
     
     return 0;
 }
+
+relogio::~relogio()
+{
+
+};

@@ -98,39 +98,48 @@ void relogio::incrementarsegundos() //Incrementar o número de segundos, sem alt
     else sec = 0;
 }
 
-int relogio::incrementarhorario() //ALTERAR O HORÁRIO USANDO IF(IF(IF));*
+void relogio::incrementarhorario() //ALTERAR O HORÁRIO USANDO IF(IF(IF));*
 {
-    if (sec < 59) //Condição para incrementar os segundos.
+    if (++sec == 60) //Incrementa os segundos, se for igual a 60 o horário "vira".
     {
-        sec++;
-        return 0;
-    }
+        sec = 0; //Os segundos zeram.
 
-    if (sec == 59 && min < 59) //Condição para alterar os minutos.
-    {
-        min++;
-        sec = 0;
-        return 0;
-    }
+        if (++min == 60) //Incrementa os minutos, se for igual a 60 o horário "vira".
+        {
+            min = 0; //Os minutos são zerados
 
-    if(min == 59 && hour < 23) //Condição para alterar as horas.
-    {
-        hour++;
-        min = 0;
-        return 0;
+            if (++hour == 24) //Incrementa as horas, se for igual a 24 o horário "vira".
+            {
+                hour = 0; //As horas são zeradas.
+            }
+            
+        }
+        
     }
-
-    else //Condição que zera o relógio.
-    {
-        sec = 0;
-        min = 0;
-        hour = 0;
-        return 0;
-    }
-    
 }
 
 void relogio::imprimirstatus() //Imprimir o horário.
 {
-    cout << endl << hour << " :" << min << " :" << sec << endl;
+    cout << endl;
+
+    if (hour < 10)
+    {
+        cout << "0";
+    }
+
+    cout << hour << " :";
+
+    if (min < 10)
+    {
+        cout << "0";
+    }
+
+    cout << min << " :"; 
+    
+    if (sec < 0)
+    {
+        cout << "0";
+    }
+    
+    cout << sec << endl;
 }
