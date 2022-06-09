@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <iomanip>
 
 using namespace std;
 
@@ -12,8 +13,10 @@ class JogadorFutebol
 private:
 
     int altura, idade, posição;
-    float peso, imc;
+    float peso;
     string nome;
+
+    void situation_IMC(); //Método auxiliar para imprimir o estado do IMC.
 
 public:
 
