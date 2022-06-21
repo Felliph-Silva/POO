@@ -16,3 +16,5 @@ Estudo sobre classes e objetos na linguagem de programação C++ orientada a obj
 
 *O tipo friend é usado apenas na definição.
 As funções amigas têm acesso todos os membros da classe.*
+
+//https://docs.microsoft.com/pt-br/cpp/cpp/increment-and-decrement-operator-overloading-cpp?view=msvc-170
