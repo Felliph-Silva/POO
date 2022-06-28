@@ -8,7 +8,7 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-#include "Array.h"
+#include "Array.hpp"
 
 int main()
 {

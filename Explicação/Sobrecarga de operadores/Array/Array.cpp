@@ -16,7 +16,7 @@ using std::setw;
 #include <cstdlib> // sai do protótipo de função
 using std::exit;
 
-#include "Array.h" // definição da classe Array
+#include "Array.hpp" // definição da classe Array
 
 // construtor-padrão para a classe Array (tamanho padrão 10)
 Array::Array( int arraySize )
