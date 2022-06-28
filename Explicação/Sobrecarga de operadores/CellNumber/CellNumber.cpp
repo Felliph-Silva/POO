@@ -7,7 +7,7 @@
 #include <iomanip>
 using std::setw;
 
-#include "CellNumber.h"
+#include "CellNumber.hpp"
 
 // operador de inserção de fluxo sobrecarregado; não pode ser
 // uma função-membro se quiséssemos invocá-lo com

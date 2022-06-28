@@ -9,7 +9,7 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-#include "CellNumber.h"
+#include "CellNumber.hpp"
 
 int main()
 {

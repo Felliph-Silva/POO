@@ -1,43 +1,45 @@
-// Arquivo de definição da classe Array
-#ifndef _ARRAY_CPP_
-#define _ARRAY_CPP_
+// Exemplo extraído do livro:
+// -> DEITEL, H. M.; DEITEL, P. J. C++: como programar. 
+//    5 ed. São Paulo: Pearson Prentice Hall, 2006.
+ 
+// Classe Array para armazenar arrays de inteiros.
+#ifndef ARRAY_H
+#define ARRAY_H
 
 #include <iostream>
-using std::cout;
-using std::cerr;
-
-// número de elementos padrão para a classe
-#define N_ELEMENTOS_PADRAO 10
+using std::ostream;
+using std::istream;
 
 class Array
 {
+    friend ostream &operator<<( ostream &, const Array & );
+    friend istream &operator>>( istream &, Array & );
+
     public:
-        Array();                // construtor sem parâmetros (default)
-        Array(int n_elem);      // construtor com parâmetro
+        Array( int = 10 ); // construtor-padrão
+        Array( const Array & ); // construtor de cópia
+        ~Array(); // destrutor
+        
+        int getSize() const; // retorna tamanho
 
-        int getNElementos() const;    // retorna o número de elementos
-        int * getVetor() const;       // retorna um vetor com os elementos do Array
-                                // método com objetivo didático
-                                // deve-se ter cuidado com atributos ponteiro
+        const Array &operator=( const Array & ); // operador de atribuição
+        bool operator==( const Array & ) const; // operador de igualdade
 
-        void setPosicao(int i, int valor);  // atribui valor para uma determinada
-                                            // posicao do objeto Array
+        // operador de desigualdade; retorna o oposto do operador ==
+        bool operator!=( const Array &right ) const
+        {
+            return ! ( *this == right ); // invoca Array::operator==
+        } // fim da função operator!=
 
-        int getPosicao(int i) const;  // retorna valor da posição i                                    
+        // operador subscrito de objetos não-const retorna lvalue modificável
+        int &operator[]( int );
 
-        void imprimir() const;        // imprime em tela os elementos do objeto Array
-
-        void operator+(int num);                      // método de sobrecarga - Exemplo: array + 2
-        Array * operator+(const Array & array) const;   // método de sobrecarga - Exemplo: arrayA + arrayB   
-
-        ~Array();               // destrutor da classe
+        // operador de subscrito de objetos const retorna rvalue
+        int operator[]( int ) const;
 
     private:
-        int * vetor;        // atributo vetor (elementos do objeto)
-        int n_elementos;    // número de elementos armazenados
-
-        void preencheVetor();   // método auxiliar para preenchimento
-                                // do atributo vetor
-};
+        int size; // tamanho do array baseado em ponteiro
+        int *ptr; // ponteiro para o primeiro elemento do array baseado em ponteiro
+}; // fim da classe Array
 
 #endif

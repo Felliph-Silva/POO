@@ -1,169 +1,148 @@
-// Arquivo de implementação da classe Array
-#include "Array.hpp"
+// Exemplo extraído do livro:
+// -> DEITEL, H. M.; DEITEL, P. J. C++: como programar. 
+//    5 ed. São Paulo: Pearson Prentice Hall, 2006.
 
-// Construtor padrão sem parâmetros da classe
-// Cria objeto com vetor com número de elementos padrão
-Array::Array()
+
+// Definições de função-membro para a classe Array
+#include <iostream>
+using std::cerr;
+using std::cout;
+using std::cin;
+using std::endl;
+
+#include <iomanip>
+using std::setw;
+
+#include <cstdlib> // sai do protótipo de função
+using std::exit;
+
+#include "Array.h" // definição da classe Array
+
+// construtor-padrão para a classe Array (tamanho padrão 10)
+Array::Array( int arraySize )
 {
-    // alocação dinâmica de memória
-    vetor = new int [N_ELEMENTOS_PADRAO];
-    n_elementos = N_ELEMENTOS_PADRAO;
-}
+    size = ( arraySize > 0 ? arraySize : 10 ); // valida arraySize
+    ptr = new int[ size ]; // cria espaço para array baseado em ponteiro
 
-// Construtor da classe
-// n_elem: número de elementos no vetor (atributo)
-Array::Array(int n_elem)
+    for ( int i = 0; i < size; i++ )
+        ptr[ i ] = 0; // configura elemento do array baseado em ponteiro
+} // fim do construtor-padrão de Array
+
+    // copia o construtor da classe Array;
+    // deve receber uma referência para impedir a recursão infinita
+Array::Array( const Array &arrayToCopy )
+      : size( arrayToCopy.size )
 {
-    if (n_elem > 0)     // verifica se número de elementos é válido
-    {
-        // alocação dinâmica de memória
-        vetor = new int [n_elem];
-        n_elementos = n_elem;
-    }
-    else
-    {
-        // n_elem é inválido! cria vetor dinamicamente
-        // com número de elementos padrão
-        vetor = new int [N_ELEMENTOS_PADRAO];
-        n_elementos = n_elem;
+    ptr = new int[ size ]; // cria espaço para array baseado em ponteiro
 
-        // lança mensagem de erro
-        cerr << "\n ERRO: numero de elementos invalido!";
-    }
+    for ( int i = 0; i < size; i++ )
+        ptr[ i ] = arrayToCopy.ptr[ i ]; // copia para o objeto
+} // fim do construtor de cópia do Array
 
-    preencheVetor();        // preenche vetor (método auxiliar privado)
-}
-
-// Preenche atributo vetor com elementos que vão
-// de 0 a (n_elementos - 1)
-void Array::preencheVetor()
-{
-    // laço de preenchimento do vetor
-    for(int i = 0; i < getNElementos(); i++)
-    {
-        vetor[i] = i;
-    }
-}
-
-// atribui valor a uma posição do vetor (atributo)
-// i: índice (posição) do vetor
-// valor: valor que se deseja atribuit
-void Array::setPosicao(int i, int valor)
-{
-    // validação da posição (índice) do vetor
-    if(i >= 0 && i < getNElementos())
-    {
-        // atribui valor (posição - índice válido)
-        vetor[i] = valor;
-    }
-    else
-    {
-        // índice inválido: lança mensagem e sai do programa
-        cerr << "\n ERRO: indice invalido!";
-        exit(EXIT_FAILURE);
-    }
-}
-
-// Retorna valor na posição de índice i
-// i: índice do vetor (atributo)
-int Array::getPosicao(int i) const
-{
-    // validação da posição (índice)
-    if(i >= 0 && i < getNElementos())
-    {
-        // retorna valor da posição solicitada
-        return vetor[i];
-    }
-    else
-    {
-        // índice inválido: lança mensagem e sai do programa        
-        cerr << "\n ERRO: indice invalido!";
-        exit(EXIT_FAILURE);
-    }
-}
-
-// Efetua a adição entre dois objetos da classe Array
-// segundo operando da soma entre objetos array
-// Retorna um objeto Array, resultado da adição
-Array * Array::operator+(const Array & array) const
-{
-    // para efetuar a adição, os vetores devem
-    // possuir o mesmo tamanho
-    if(getNElementos() == array.getNElementos())
-    {
-        // a adição é possível
-        // instanciação de objeto resultado (ponteiro)
-        Array * resultado = new Array(getNElementos());
-
-        // adição entre os objetos ARray
-        for(int i = 0; i < getNElementos(); i++)
-        {
-            resultado->vetor[i] = vetor[i] + array.vetor[i];
-            // veja uso do operador seta (->), devido o ponteiro
-            
-            //retorno.vetor[i] = this->vetor[i] + array.vetor[i];
-        }
-
-        return resultado;  // retorna resultado da adição
-    }
-
-    // condição inválida para realização da adição
-    // atributos vetor de diferentes tamanhos
-    cerr << "\n ERRO: os vetores devem ter o mesmo tamanho!";
-    exit(EXIT_FAILURE); 
-}
-
-// Retorna o número de elementos do objeto array
-int Array::getNElementos() const
-{
-    return n_elementos;
-}
-
-// Exibe em tela os elementos do objeto Array
-void Array::imprimir() const
-{
-    cout << "\n VETOR: ";
-
-    // percorre elementos do objeto Array,
-    // imprimindo-os em tela
-    for(int i = 0; i < getNElementos(); i++)
-    {
-        cout << vetor[i] << " ";
-    }
-}
-
-// Método destrutor da classe
+// destrutor para a classe Array
 Array::~Array()
 {
-    // desaloca a memória utilizada pelo
-    // atributo vetor
-    delete [] vetor;
-}
+    delete [] ptr; // libera espaço do array baseado em ponteiro
+} // fim do destrutor
 
-// Retorna uma cópia do atributo vetor
-int * Array::getVetor() const
+// retorna o número de elementos do Array
+int Array::getSize() const
 {
-    // alocação dinâmica de vetor vetorCopia
-    int * vetorCopia = new int [getNElementos()];
+    return size; // número de elementos em Array
+} // fim da função getSize
 
-    // efetua cópia do atributo vetor em vetorCopia
-    for(int i = 0; i < getNElementos(); i++)
-    {
-        vetorCopia[i] = vetor[i];
-    }
-
-    // retorna a cópia (vetorCopia)
-    return vetorCopia;
-}
-
-// Método de sobrecarga
-// num: escalar a ser adicionado ao vetor
-void Array::operator+(int num)
+// operador de atribuição sobrecarregado;
+// retorno const evita: (a1 = a2) = a3
+const Array &Array::operator=( const Array &right )
 {
-    // realização de operação de adição entre
-    // vetor e um escalar (modifica o atributo do objeto)
-    for(int i = 0; i < getNElementos(); i++)
+    if ( &right != this ) // evita auto-atribuição:
     {
-        vetor[i] = vetor[i] + num;
-    }    
-}
+        // para Arrays de tamanhos diferentes, desaloca array do lado esquerdo
+        // original, então aloca o novo array à esquerda
+        if ( size != right.size )
+        {
+            delete [] ptr; // libera espaço
+            size = right.size; // redimensiona esse objeto
+            ptr = new int[ size ]; // cria espaço para a cópia do array
+        } // fim do if interno
+
+        for ( int i = 0; i < size; i++ )
+            ptr[ i ] = right.ptr[ i ]; // copia o array para o objeto
+    } // fim do if externo
+
+    return *this; // permite x = y = z, por exemplo
+} // fim da função operator=
+
+// determina se dois Arrays são iguais e
+// retorna true, caso contrário retorna false
+bool Array::operator==( const Array &right ) const
+{
+    if ( size != right.size )
+        return false; // arrays com diferentes números de elementos
+
+    for ( int i = 0; i < size; i++ )
+        if ( ptr[ i ] != right.ptr[ i ] )
+            return false; // o conteúdo do Array não é igual
+
+    return true; // Arrays são iguais
+} // fim da função operator==
+
+// operador de subscrito sobrecarregado para Arrays não-const;
+// retorno de referência cria um lvalue modificável
+int &Array::operator[]( int subscript )
+{
+    // verifica erro de subscrito fora do intervalo
+    if ( subscript < 0 || subscript >= size )
+    {
+        cerr << "\nError: indice " << subscript
+             << " fora do intervalo" << endl;
+        exit( 1 ); // termina o programa; subscrito fora do intervalo
+    } // fim do if
+
+    return ptr[ subscript ]; // retorno da referência
+} // fim da função operator[]
+
+// operador de subscrito sobrecarregado para Arrays const
+// retorno de referência const cria um rvalue
+int Array::operator[]( int subscript ) const
+{
+    // verifica erro de subscrito fora do intervalo
+    if ( subscript < 0 || subscript >= size )
+    {
+        cerr << "\nError: indice " << subscript
+             << " fora do intervalo" << endl;
+        exit( 1 ); // termina o programa; subscrito fora do intervalo
+    } // fim do if
+
+    return ptr[ subscript ]; // retorna cópia desse elemento
+} // fim da função operator[]
+
+// operador de entrada sobrecarregado para a classe Array;
+// entrada de valores para o Array inteiro
+istream &operator>>( istream &input, Array &a )
+{
+    for ( int i = 0; i < a.size; i++ )
+        input >> a.ptr[ i ];
+
+    return input; // permite cin >> x >> y;
+} // fim da função
+
+// operador de saída sobrecarregado para classe Array
+ostream &operator<<( ostream &output, const Array &a )
+{
+    int i;
+
+    // gera saída do array baseado em ptr private
+    for ( i = 0; i < a.size; i++ )
+    {
+        output << setw( 12 ) << a.ptr[ i ];
+
+        if ( ( i + 1 ) % 4 == 0 ) // 4 números por linha de saída
+            output << endl;
+    } // fim do for
+
+    if ( i % 4 != 0 ) // termina a última linha de saída
+        output << endl;
+
+    return output; // permite cout << x << y;
+} // fim da função operator<<
