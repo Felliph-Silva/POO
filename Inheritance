@@ -1,0 +1,18 @@
+*Inheritance*
+
+-Super class: classe base para criar outras classes que possuem acréssimo de atributos ou métodos.
+
+-Sub class: classe que herda os atributos e métodos da super class.
+
+Class subclass : private superclass
+{
+private:
+Atributes
+
+public:
+Methods
+};
+
+~É necessário receber o atributo por meio do método get, pois a classe derivada não é capaz de acessar os atributos privados da classe base.
+
+
