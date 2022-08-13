@@ -8,10 +8,14 @@ class PessoaJurídica : public Person
 private:
     
     string CNPJ;
+    string razao_social;
 public:
-
-    string getcnpj() const { return CNPJ; }
-    void setcnpj(const string &CNPJ) { this->CNPJ = CNPJ; }
+    //Métodos get;
+    string getcnpj() const          { return CNPJ; }
+    string getrazão_social() const  { return razao_social; }
+    //Métodos set;
+    void setcnpj          (const string &CNPJ);
+    void setrazão_social  (const string &razao_social);
 };
 
 #endif

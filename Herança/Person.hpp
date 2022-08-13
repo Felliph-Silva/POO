@@ -2,11 +2,10 @@
 #define _PERSON.HPP_
 
 #include <iostream>
-using std::cout;
-using std::cin;
 
 #include <string>
-using std::string;
+
+using namespace std;
 
 class Person
 {

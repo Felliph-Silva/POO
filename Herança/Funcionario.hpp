@@ -20,14 +20,14 @@ public:
     //Métodos get:
     string getmatricula() { return matricula; }
     double getsalario_base() { return salario_base; }
-    double carga_horaria_mensal() { return carga_horaria_mensal; }
-    double horas_trabalhadas() { return horas_trabalhadas; }
+    double getcarga_horaria_mensal() { return carga_horaria_mensal; }
+    double gethoras_trabalhadas() { return horas_trabalhadas; }
 
     //Métodos set:
-    void setmatricula (string matricula) { this->matricula = matricula; }
-    void setsalario_base (double salario_base) {this->salario_base = salario_base; }
-    void setcarga_horaria_mensal (double carga_horaria_mensal) { this->carga_horaria_mensal = carga_horaria_mensal; }
-    void sethoras_trabalhadas (double horas_trabalhadas) { this->horas_trabalhadas = horas_trabalhadas; }
+    void setmatricula (string matricula);
+    void setsalario_base (double salario_base);
+    void setcarga_horaria_mensal (double carga_horaria_mensal);
+    void sethoras_trabalhadas (double horas_trabalhadas);
 
 };
 
